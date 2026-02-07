@@ -1,18 +1,33 @@
+const CACHE_NAME = 'v1';
+const FILES_TO_CACHE = [
+  '/',
+  '/index.html',
+  '/style.css',
+  '/script.js',
+  '/manifest.json'
+];
+
 self.addEventListener('install', (event) => {
   event.waitUntil(
-    caches.open('v1').then((cache) => {
-      return fetch('/manifest.json')
-        .then(() => cache.addAll([
-          '/',
-          '/index.html',
-          '/style.css',
-          '/script.js'
-        ]))
-        .catch(() => {
-          console.log('Some files failed to cache');
-        });
+    caches.open(CACHE_NAME)
+      .then((cache) => cache.addAll(FILES_TO_CACHE))
+      .catch((err) => {
+        console.error('Failed to cache files during install:', err);
+      })
+  );
+  self.skipWaiting();
+});
+
+self.addEventListener('activate', (event) => {
+  event.waitUntil(
+    caches.keys().then((cacheNames) => {
+      return Promise.all(
+        cacheNames.filter((name) => name !== CACHE_NAME)
+          .map((name) => caches.delete(name))
+      );
     })
   );
+  self.clients.claim();
 });
 
 self.addEventListener('fetch', (event) => {
