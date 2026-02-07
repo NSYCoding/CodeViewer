@@ -1,6 +1,10 @@
 {
   "name": "Code Viewer",
   "short_name": "CViewer",
-  "start_url": "/",
-  "display": "standalone"
+  "start_url": "./index.html?source=pwa",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#667eea",
+  "theme_color": "#764ba2",
+  "description": "View GitHub repository files and commits"
 }

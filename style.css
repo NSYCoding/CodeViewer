@@ -2,36 +2,59 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    color: white;
+    color: lightblue;
     text-decoration: none;
     list-style: none;
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+:root {
+    --bg-1: #667eea;
+    --bg-2: #764ba2;
+    --glass: rgba(255, 255, 255, 0.08);
+    --glass-strong: rgba(255, 255, 255, 0.12);
+    --border: rgba(255, 255, 255, 0.2);
+    --border-strong: rgba(255, 255, 255, 0.35);
+    --shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+    --shadow-strong: 0 12px 40px rgba(0, 0, 0, 0.18);
+    --radius: 16px;
+    --gap: 1.5rem;
 }
 
 body {
     width: 100vw;
     height: 100vh;
-    background-color: skyblue;
-    display: flex;
+    background: linear-gradient(135deg, var(--bg-1) 0%, var(--bg-2) 100%);
+    display: block;
+    overflow: hidden;
 }
 
-.sidebar {
-    height: 100vh;
-    width: 15vw;
+main {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 20px;
+    min-height: 100vh;
+    width: 100vw;
     flex-direction: column;
-    border-right: solid white 2px;
+    gap: var(--gap);
+    padding: clamp(0.75rem, 2vw, 1.5rem);
 }
 
 .code {
-    border: none;
-    outline: none;
     width: 100%;
-    height: 100vh;
-    background-color: skyblue;
+    height: 100%;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    outline: none;
+    width: min(1200px, 94vw);
+    height: min(65vh, 720px);
+    background-color: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border-radius: var(--radius);
+    padding: clamp(0.85rem, 2vw, 1.25rem);
+    font-size: clamp(0.85rem, 1.4vw, 0.98rem);
+    line-height: 1.6;
+    box-shadow: var(--shadow);
+    resize: none;
 }
 
 .install-button {
@@ -43,10 +66,409 @@ body {
     color: white;
     border: none;
     border-radius: 50%;
-    width: 60px;
-    height: 60px;
+    width: 56px;
+    height: 56px;
     cursor: pointer;
-    font-size: 24px;
+    font-size: 22px;
     text-align: center;
-    line-height: 60px;
+    line-height: 56px;
+    box-shadow: 0 4px 15px rgba(0, 123, 255, 0.35);
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+}
+
+.install-button:hover {
+    background-color: #0056b3;
+    transform: scale(1.06);
+    box-shadow: 0 6px 20px rgba(0, 123, 255, 0.5);
+}
+
+.install-button:active {
+    transform: scale(0.98);
+}
+
+.login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: min(520px, 92vw);
+    min-height: 360px;
+    background: var(--glass);
+    backdrop-filter: blur(10px);
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow);
+    transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 2rem;
+}
+
+.login:hover {
+    background: var(--glass-strong);
+    border-color: var(--border-strong);
+    box-shadow: var(--shadow-strong);
+}
+
+.login-input {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(10px);
+    color: white;
+    font-size: 16px;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.login-input::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.login-input:focus {
+    outline: none;
+    background: rgba(255, 255, 255, 0.12);
+    border-color: rgba(255, 255, 255, 0.5);
+    box-shadow: 0 0 12px rgba(102, 126, 234, 0.35);
+}
+
+.login-button {
+    width: 100%;
+    padding: 12px 24px;
+    background: linear-gradient(135deg, var(--bg-1) 0%, var(--bg-2) 100%);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.login-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(102, 126, 234, 0.35);
+}
+
+.login-button:active {
+    transform: translateY(0);
+}
+
+h1 {
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+    text-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+h2 {
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    font-weight: 400;
+    opacity: 0.9;
+    margin-bottom: 0.75rem;
+}
+
+.comments {
+    width: min(1200px, 94vw);
+    padding: clamp(0.75rem, 2vw, 1rem);
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border-radius: var(--radius);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    max-height: clamp(140px, 22vh, 240px);
+    overflow-y: auto;
+    box-shadow: var(--shadow);
+}
+
+.file-controls {
+    width: min(1200px, 94vw);
+    display: flex;
+    gap: 0.75rem;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.file-input {
+    flex: 1 1 260px;
+    min-width: 200px;
+    padding: 10px 12px;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.08);
+    color: white;
+}
+
+.file-button {
+    padding: 10px 16px;
+    border: none;
+    border-radius: 10px;
+    background: linear-gradient(135deg, var(--bg-1) 0%, var(--bg-2) 100%);
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.layout {
+    width: min(1200px, 94vw);
+    display: grid;
+    grid-template-columns: minmax(220px, 300px) 1fr;
+    gap: 1rem;
+    align-items: start;
+}
+
+.file-list {
+    height: min(65vh, 720px);
+    display: flex;
+    flex-direction: column;
+    padding: 0.75rem;
+    border-radius: var(--radius);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: var(--shadow);
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.file-list-header {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.file-list-title {
+    font-weight: 600;
+    font-size: 0.9rem;
+    opacity: 0.7;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.file-filter {
+    width: 100%;
+    padding: 8px 10px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.05);
+    color: white;
+    font-size: 0.85rem;
+    outline: none;
+    transition: all 0.2s ease;
+}
+
+.file-filter:focus {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.4);
+}
+
+.file-items {
+    flex: 1;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.file-item {
+    display: block;
+    padding: 6px 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.8);
+    transition: background 0.2s ease;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.file-item:hover {
+    background: rgba(255, 255, 255, 0.08);
+    color: white;
+}
+
+.file-item.active {
+    background: rgba(255, 255, 255, 0.15);
+    color: #fff;
+    font-weight: 500;
+    border-left: 3px solid #667eea;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.viewer-container {
+    position: relative;
+    width: min(1200px, 94vw);
+    height: min(65vh, 720px);
+}
+
+.hidden {
+    display: none !important;
+}
+
+.media-viewer {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    border-radius: var(--radius);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.media-viewer img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+.comment-item {
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.comment-author {
+    display: block;
+    margin-bottom: 0.25rem;
+}
+
+.comment-msg {
+    font-size: 0.9rem;
+    opacity: 0.8;
+    margin: 0.5rem 0;
+}
+
+.comment-date {
+    opacity: 0.6;
+}
+
+@media (max-width: 1024px) {
+    .layout {
+        grid-template-columns: minmax(200px, 260px) 1fr;
+    }
+    .file-list {
+        height: min(55vh, 560px);
+    }
+    .code {
+        height: min(55vh, 560px);
+    }
+}
+
+@media (max-width: 768px) {
+    body {
+        overflow: auto;
+    }
+    main {
+        min-height: auto;
+    }
+    .layout {
+        grid-template-columns: 1fr;
+    }
+    .file-list {
+        height: 220px;
+    }
+    .code {
+        height: 48vh;
+    }
+    .comments {
+        max-height: 28vh;
+    }
+    .file-controls {
+        gap: 0.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .code {
+        height: 42vh;
+        font-size: 0.85rem;
+    }
+    .file-button,
+    .login-button {
+        width: 100%;
+    }
+    .file-controls {
+        flex-direction: column;
+        align-items: stretch;
+    }
+}
+
+input[type="file"] {
+    display: none;
+}
+
+input[type="file"] + label {
+    padding: 10px 16px;
+    border: none;
+    border-radius: 10px;
+    background: linear-gradient(135deg, var(--bg-1) 0%, var(--bg-2) 100%);
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+input[type="file"] + label:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(102, 126, 234, 0.35);
+}
+
+input[type="file"] + label:active {
+    transform: translateY(0);
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.08);
+    color: white;
+    font-size: 16px;
+}
+
+#repo-selector {
+    position: fixed;
+    top: 20px;
+    right: 90px;
+    z-index: 999;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    padding: 10px;
+}
+
+#repo-selector select {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 5px;
+    padding: 8px;
+    font-size: 14px;
+    cursor: pointer;
+    outline: none;
+}
+
+#repo-selector select option {
+    background: #333;
+    color: white;
+}
+
+@media (max-width: 768px) {
+    #repo-selector {
+        top: auto;
+        bottom: 20px;
+        right: 90px;
+    }
 }

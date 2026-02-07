@@ -9,8 +9,15 @@
 </head>
 <body>
     <main>
-        <textarea readonly class="code" name="code" id="code"></textarea>
-        <section class="comments"></section>
+        <div class="layout">
+            <aside class="file-list" id="file-list">
+                <div class="file-items" id="file-items"></div>
+            </aside>
+            <div class="content">
+                <textarea readonly class="code" name="code" id="code"></textarea>
+                <section class="comments"></section>
+            </div>
+        </div>
     </main>
 
     <script type="module" src="./script.js"></script>
