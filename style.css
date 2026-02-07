@@ -33,3 +33,20 @@ body {
     height: 100vh;
     background-color: skyblue;
 }
+
+.install-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    cursor: pointer;
+    font-size: 24px;
+    text-align: center;
+    line-height: 60px;
+}
