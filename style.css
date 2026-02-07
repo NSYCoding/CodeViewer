@@ -25,7 +25,7 @@ body {
     width: 100vw;
     height: 100vh;
     background: linear-gradient(135deg, var(--bg-1) 0%, var(--bg-2) 100%);
-    display: block;
+    display: flex;
     overflow: hidden;
 }
 
