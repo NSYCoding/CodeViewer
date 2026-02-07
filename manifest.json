@@ -1,0 +1,6 @@
+{
+  "name": "Code Viewer",
+  "short_name": "CViewer",
+  "start_url": "/",
+  "display": "standalone"
+}
